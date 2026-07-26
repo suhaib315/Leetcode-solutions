@@ -1,4 +1,7 @@
-//Given a string containing just the characters '(' and ')', return the length of the longest valid (well-formed) parentheses substring( leetcode hard);
+//Given a string containing just the characters '(' and ')', return the length of the longest valid (well-formed) parentheses substring;
+//Leetcode Hard
+//THIS IS THE MOST UNIQUE SOLUTION I DESIGNED FOR THIS PROBLEM TOOK ME AROUND 6HOURS I HAD UPLOADED ITS VEDIO SOLUTION ON LINKDIN ALSO;
+
 class Solution {
 public:
     int longestValidParentheses(string s) {
