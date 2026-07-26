@@ -1,0 +1,24 @@
+// validate BST;
+// I AM USING CONCEPT OF SORTED NUMBERS TO VALIDATE A BST NO ONE HAD SOLVED THIS PROBLEM LIKE I DID IT TOOK ME SOO LONG TO I HAD UPOADED IT EXPLANATION VEDIO ON MY LINKDIN
+class Solution {
+public:
+    bool helper(TreeNode *root,vector<int> &v)
+    {
+        if(root==nullptr)
+           return true;
+        if(helper(root->left,v)==false)
+            return false;
+        v.push_back(root->val);
+        if(v.size()>=2 && v[v.size()-1]<=v[v.size()-2])
+           return false;
+        if(helper(root->right,v)==false)
+            return false;
+        return true;
+        
+    }
+    bool isValidBST(TreeNode* root) {
+        vector<int> v;
+        return helper(root,v);
+        
+    }
+};

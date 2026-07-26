@@ -1,0 +1,50 @@
+//Reverse words in a string 
+class Solution {
+2public:
+3    string reverseWords(string s) {
+4        stack<char> st;
+5        int x=0;
+6        while(x<s.size())
+7        {
+8            if(st.size()==0&&s[x]==' ')
+9                x++;
+10            else{
+11               st.push(s[x]);
+12                x++;
+13            }
+14        }
+15        string str;
+16        s.clear();
+17        while(!st.empty())
+18        {
+19             if(str.size()==0&&st.top()==' ')
+20                    st.pop();
+21              else if(st.top()==' '){
+22               reverse(str.begin(),str.end());
+23               str.push_back(st.top());
+24               st.pop();
+25               int a=0;
+26               while(a<str.size())
+27               {
+28                   s.push_back(str[a]);
+29                   a++;
+30               }
+31               str.clear();
+32            }
+33            else
+34            {
+35                str.push_back(st.top());
+36                st.pop();
+37            }
+38        }
+39        reverse(str.begin(),str.end());
+40        int a=0;
+41        while(a<str.size())
+42        {
+43            s.push_back(str[a]);
+44            a++;
+45        }
+46        return s;
+47        
+48    }
+49};
