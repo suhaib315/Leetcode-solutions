@@ -1,0 +1,32 @@
+// I deliberately designed a list + unordered_map structure to achieve O(1) eager deletion—proving that this logic can handle infinite live data streams without memory leaks
+//This problem took a long for me to solve it in this way 
+    //->find unique character in a string
+class Solution {
+public:
+    int firstUniqChar(string s) {
+        unordered_set<char> SET,set;
+        list<pair<char, int>> lst;
+        unordered_map<char, list<pair<char, int>>::iterator> mp;
+        int x=0;
+        while(x<s.size())
+        {
+            if(SET.find(s[x])==SET.end() && set.find(s[x])==set.end())
+            {
+                 lst.push_back({s[x],x});
+                 mp[s[x]]=prev(lst.end());
+                 SET.insert(s[x]);
+            }
+            else if(SET.find(s[x])!=SET.end())
+            {
+                set.insert(s[x]);
+                lst.erase(mp[s[x]]);
+                mp.erase(s[x]);
+                SET.erase(s[x]);
+            }
+            x++;
+        }
+        if(!lst.empty())
+            return lst.front().second;
+        return -1;
+    }
+};
